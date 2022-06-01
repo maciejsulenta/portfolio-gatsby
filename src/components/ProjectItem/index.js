@@ -1,6 +1,6 @@
 import React from "react";
-import Image from "./Image";
 import "./style.scss";
+import Image from "./Image";
 import Title from "./Title";
 
 export default function ProjectItem({ project, itemIndex }) {
@@ -12,7 +12,7 @@ export default function ProjectItem({ project, itemIndex }) {
       <div className="info-block">
         <p className="info-block-header">
           <span>
-            <hash />0{itemIndex}
+            #0{itemIndex}
           </span>
         </p>
         {project.info.map((element) => (

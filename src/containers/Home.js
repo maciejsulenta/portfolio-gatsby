@@ -9,9 +9,11 @@ export default function Home() {
     <div>
       <Header />
       <div className="main-container" id="main-container">
-        {pageData.map((project, index) => (
-          <ProjectItem key={index} project={project} itemIndex={index} />
-        ))}
+        <ul>
+          {pageData.map((project, index) => (
+            <ProjectItem key={index} project={project} itemIndex={index} />
+          ))}
+        </ul>
       </div>
       <Footer />
     </div>
