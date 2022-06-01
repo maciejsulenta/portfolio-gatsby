@@ -2,6 +2,7 @@ import React, { useReducer, useRef } from "react";
 import "./style.scss";
 import Image from "./Image";
 import Title from "./Title";
+import animate from "./animate";
 
 const initialState = {
   opacity: 0,
@@ -26,6 +27,7 @@ export default function ProjectItem({ project, itemIndex }) {
   const speed = -5;
   const listItem = useRef(null);
   const [state, dispatch] = useReducer(reducer, initialState);
+  const easeMethod = "easeInOutCubic";
 
   const parallax = (event) => {
     const x = (window.innerWidth - event.pageX * speed) / 100;
@@ -34,13 +36,29 @@ export default function ProjectItem({ project, itemIndex }) {
     dispatch({ type: "MOUSE_COORDINATES", payload: { x, y } });
   };
 
+  const handleOpacity = (initialOpacity, newOpacity, duration) => {
+    animate({
+      fromValue: initialOpacity,
+      toValue: newOpacity,
+      onUpdate: (newOpacity, callback) => {
+        dispatch({ type: "CHANGE_OPACITY", payload: newOpacity });
+        callback();
+      },
+      onComplete: () => {},
+      duration: duration,
+      easeMethod: easeMethod,
+    });
+  };
+
   const handleMouseEnter = () => {
-    dispatch({ type: "CHANGE_OPACITY", payload: 1 });
+    handleOpacity(0, 1, 800);
     listItem.current.addEventListener("mousemove", parallax);
   };
+
+
   const handleMouseLeave = () => {
     listItem.current.removeEventListener("mousemove", parallax);
-    dispatch({ type: "CHANGE_OPACITY", payload: 0 });
+    handleOpacity(1, 0, 800);
     dispatch({ type: "MOUSE_COORDINATES", payload: initialState.parallaxPos });
   };
 
