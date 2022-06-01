@@ -1,9 +1,10 @@
-import React, { useReducer, useRef } from "react";
+import React, { useReducer, useRef, useContext } from "react";
 import cn from "classnames";
 import "./style.scss";
 import Image from "./Image";
 import Title from "./Title";
 import animate from "./animate";
+import { CursorContext } from "../CustomCursor/CursorManager";
 
 const initialState = {
   opacity: 0,
@@ -44,6 +45,7 @@ export default function ProjectItem({ project, itemIndex }) {
   const listItem = useRef(null);
   const [state, dispatch] = useReducer(reducer, initialState);
   const easeMethod = "easeInOutCubic";
+  const { setSize } = useContext(CursorContext);
 
   const parallax = (event) => {
     const x = (window.innerWidth - event.pageX * speed) / 100;
@@ -101,6 +103,7 @@ export default function ProjectItem({ project, itemIndex }) {
     handleRotation(state.rotationPosition, 100);
     listItem.current.addEventListener("mousemove", parallax);
     dispatch({ type: "MOUSE_ENTER" });
+    setSize("regular");
   };
 
   const handleMouseLeave = () => {
@@ -110,6 +113,7 @@ export default function ProjectItem({ project, itemIndex }) {
     handleRotation(state.rotationPosition, 100);
     dispatch({ type: "MOUSE_COORDINATES", payload: initialState.parallaxPos });
     dispatch({ type: "MOUSE_LEAVE" });
+    setSize("small");
   };
 
   const { opacity, parallaxPos, scale, rotationPosition, active } = state;

@@ -1,3 +1,4 @@
+@import '../../styles/mixins';
 .project-item-container {
   cursor: pointer;
   line-height: 1.25;
@@ -88,6 +89,14 @@
         transform: translateY(0);
         opacity: 1;
       }
+    }
+  }
+
+  @include mq('tablet', max) {
+    padding: 25px 0;
+
+    .info-block {
+      display: none;
     }
   }
 }

@@ -1,8 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
+import CustomCursor from '../components/CustomCursor';
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import ProjectItem from "../components/ProjectItem";
 import { pageData } from "../utils/data";
+import CustomManager from '../components/CustomCursor/CursorManager'
 
 export default function Home() {
   const menuItems = useRef(null);
@@ -57,7 +59,8 @@ export default function Home() {
   }, []);
 
   return (
-    <div>
+    <CustomManager>
+      <CustomCursor />
       <Header />
       <div className="main-container" id="main-container">
         <ul ref={menuItems}>
@@ -67,6 +70,6 @@ export default function Home() {
         </ul>
       </div>
       <Footer />
-    </div>
+    </CustomManager>
   );
 }
