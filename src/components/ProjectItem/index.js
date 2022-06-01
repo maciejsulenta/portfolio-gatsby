@@ -1,4 +1,5 @@
 import React, { useReducer, useRef } from "react";
+import cn from "classnames";
 import "./style.scss";
 import Image from "./Image";
 import Title from "./Title";
@@ -7,6 +8,9 @@ import animate from "./animate";
 const initialState = {
   opacity: 0,
   parallaxPos: { x: 0, y: -20 },
+  scale: 0.8,
+  rotationPosition: 0,
+  active: false,
 };
 
 function reducer(state, action) {
@@ -16,6 +20,18 @@ function reducer(state, action) {
     }
     case "MOUSE_COORDINATES": {
       return { ...state, parallaxPos: action.payload };
+    }
+    case "CHANGE_ROTATION": {
+      return { ...state, rotationPosition: action.payload };
+    }
+    case "CHANGE_SCALE": {
+      return { ...state, scale: action.payload };
+    }
+    case "MOUSE_ENTER": {
+      return { ...state, active: true };
+    }
+    case "MOUSE_LEAVE": {
+      return { ...state, active: false };
     }
     default: {
       throw new Error();
@@ -50,19 +66,53 @@ export default function ProjectItem({ project, itemIndex }) {
     });
   };
 
-  const handleMouseEnter = () => {
-    handleOpacity(0, 1, 800);
-    listItem.current.addEventListener("mousemove", parallax);
+  const handleScale = (initialScale, newScale, duration) => {
+    animate({
+      fromValue: initialScale,
+      toValue: newScale,
+      onUpdate: (newScale, callback) => {
+        dispatch({ type: "CHANGE_SCALE", payload: newScale });
+        callback();
+      },
+      onComplete: () => {},
+      duration: duration,
+      easeMethod: easeMethod,
+    });
   };
 
+  const handleRotation = (currentRotation, duration) => {
+    const newRotation = Math.random() * 15 * Math.round(Math.random() ? 1 : -1);
+    animate({
+      fromValue: currentRotation,
+      toValue: newRotation,
+      onUpdate: (newRotation, callback) => {
+        dispatch({ type: "CHANGE_ROTATION", payload: newRotation });
+        callback();
+      },
+      onComplete: () => {},
+      duration: duration,
+      easeMethod: easeMethod,
+    });
+  };
+
+  const handleMouseEnter = () => {
+    handleOpacity(0, 1, 100);
+    handleScale(0.8, 1, 100);
+    handleRotation(state.rotationPosition, 100);
+    listItem.current.addEventListener("mousemove", parallax);
+    dispatch({ type: "MOUSE_ENTER" });
+  };
 
   const handleMouseLeave = () => {
     listItem.current.removeEventListener("mousemove", parallax);
-    handleOpacity(1, 0, 800);
+    handleOpacity(1, 0, 100);
+    handleScale(1, initialState.scale, 100);
+    handleRotation(state.rotationPosition, 100);
     dispatch({ type: "MOUSE_COORDINATES", payload: initialState.parallaxPos });
+    dispatch({ type: "MOUSE_LEAVE" });
   };
 
-  const { opacity, parallaxPos } = state;
+  const { opacity, parallaxPos, scale, rotationPosition, active } = state;
 
   return (
     <li className="project-item-container" ref={listItem}>
@@ -71,9 +121,15 @@ export default function ProjectItem({ project, itemIndex }) {
         handleMouseEnter={handleMouseEnter}
         handleMouseLeave={handleMouseLeave}
       />
-      <Image url={project.url} opacity={opacity} parallaxPos={parallaxPos} />
+      <Image
+        url={project.url}
+        opacity={opacity}
+        parallaxPos={parallaxPos}
+        scale={scale}
+        rotationPosition={rotationPosition}
+      />
 
-      <div className="info-block">
+      <div className={cn("info-block", { "as-active": active })}>
         <p className="info-block-header">
           <span>#0{itemIndex}</span>
         </p>

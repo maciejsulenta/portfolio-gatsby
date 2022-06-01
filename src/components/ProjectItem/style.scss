@@ -23,6 +23,26 @@
     text-transform: lowercase;
     z-index: 1;
     line-height: 1.1;
+    &.clone {
+      position: absolute;
+      top: 0;
+      pointer-events: none;
+      color: black;
+      clip-path: inset(0 100% 0 0);
+      transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+    }
+
+    &:not(.clone) {
+      -webkit-text-stroke: 1px rgba(0, 0, 0, 0.25);
+      color: transparent;
+      &:hover {
+        cursor: pointer;
+
+        ~ .clone {
+          clip-path: inset(0 0 0 0);
+        }
+      }
+    }
   }
 
   .info-block {
@@ -44,7 +64,7 @@
         align-items: center;
       }
     }
-    
+
     p {
       margin-bottom: 10px;
       overflow: hidden;
@@ -53,6 +73,20 @@
         display: block;
         opacity: 0;
         transition: all 0.25s ease-in-out;
+        transform: translateY(10px);
+      }
+    }
+    &.as-active {
+      @for $i from 0 through 4 {
+        p:nth-child(#{$i + 1}n) {
+          span {
+            transition-delay: #{$i / 10}s;
+          }
+        }
+      }
+      span {
+        transform: translateY(0);
+        opacity: 1;
       }
     }
   }
