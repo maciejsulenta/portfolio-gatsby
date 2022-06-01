@@ -27,7 +27,6 @@ export default function CustomCursor() {
       positionRef.current.mouseY =
         mouseY - secondaryCursor.current.clientHeight / 2;
     });
-    return () => {};
   }, []);
 
   useEffect(() => {

@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import "./style.scss";
 import { CursorContext } from "../CustomCursor/CursorManager";
 import cn from "classnames";
+import { Link } from "gatsby";
 
 export default function Header() {
   const { setSize } = useContext(CursorContext);
@@ -18,12 +19,30 @@ export default function Header() {
     <>
       <div className="overlay-nav">
         <div className="header-container">
-          <h1 onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-            collab
-          </h1>
-          <h1 onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-            studio
-          </h1>
+          <Link
+            to="/"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            className="header-link"
+          >
+            about us
+          </Link>
+          <Link
+            to="/work"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            className="header-link"
+          >
+            work
+          </Link>
+          <Link
+            to="/"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            className="header-link"
+          >
+            contact
+          </Link>
         </div>
       </div>
       <div
@@ -33,8 +52,24 @@ export default function Header() {
 
       <div className={cn("overlay-burger-menu", { "as-opened": opened })}>
         <div className="burger-menu-header">#menu</div>
-        <h1>collab</h1>
-        <h1>studio</h1>
+        <Link
+            to="/"
+            className="burger-link"
+          >
+            about us
+          </Link>
+          <Link
+            to="/work"
+            className="burger-link"
+          >
+            work
+          </Link>
+          <Link
+            to="/"
+            className="burger-link"
+          >
+            contact
+          </Link>
       </div>
     </>
   );

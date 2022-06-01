@@ -1,12 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
-import CustomCursor from '../components/CustomCursor';
+import CursorManager from "../components/CustomCursor/CursorManager";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import ProjectItem from "../components/ProjectItem";
 import { pageData } from "../utils/data";
-import CustomManager from '../components/CustomCursor/CursorManager'
+import CustomCursor from "../components/CustomCursor";
 
-export default function Home() {
+export default function Work() {
   const menuItems = useRef(null);
   const [renderItems, setRenderItems] = useState(pageData);
 
@@ -53,13 +53,11 @@ export default function Home() {
     };
 
     menuItems.current.addEventListener("scroll", scrollUpdate);
-    return () => {
-      menuItems.current.removeEventListener("scroll", scrollUpdate);
-    };
+    return () => menuItems.current.removeEventListener("scroll", scrollUpdate);
   }, []);
 
   return (
-    <CustomManager>
+    <CursorManager>
       <CustomCursor />
       <Header />
       <div className="main-container" id="main-container">
@@ -70,6 +68,6 @@ export default function Home() {
         </ul>
       </div>
       <Footer />
-    </CustomManager>
+    </CursorManager>
   );
 }

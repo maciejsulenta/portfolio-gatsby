@@ -11,10 +11,12 @@
   .header-container {
     display: flex;
 
-    h1 {
+    .header-link {
       cursor: pointer;
-      margin: 0 20px;
+      margin: 0 10px;
       transition: opacity 0.35s ease-in-out;
+      text-decoration: none;
+      color: black;
 
       &:hover {
         color: var(--main-color);
@@ -41,12 +43,14 @@
     clip-path: inset(0% 0 0% 0);
   }
 
-  h1 {
+  .burger-link {
     font: {
       size: 10vw;
-      family: 'Space Grotesk', sans-serif;
+      family: "Space Grotesk", sans-serif;
     }
     margin: 20px 0;
+    text-decoration: none;
+    color: white;
   }
 
   .burger-menu-header {
@@ -57,7 +61,7 @@
 }
 
 .overlay-burger-icon {
-  left: 50px;
+  right: 50px;
   top: 50px;
   position: fixed;
   z-index: 3;
@@ -73,7 +77,7 @@
   &:before {
     content: "";
     width: 48px;
-    height: 2px;
+    height: 5px;
     position: absolute;
     background-color: #111;
     left: 50%;
