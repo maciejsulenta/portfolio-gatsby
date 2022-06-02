@@ -5,7 +5,7 @@ import Header from "../components/Header";
 import ProjectItem from "../components/ProjectItem";
 import { pageData } from "../utils/data";
 import CustomCursor from "../components/CustomCursor";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 
 export default function Work({
   data: {
@@ -69,7 +69,7 @@ export default function Work({
       <div className="main-container" id="main-container">
         <ul ref={menuItems}>
           {renderItems.map((project, index) => (
-            <ProjectItem key={index} project={project} itemIndex={index} />
+            <Link className="project-link" to={`/projekty/${project.slug}`}><ProjectItem key={index} project={project} itemIndex={index} /></Link>
           ))}
         </ul>
       </div>
@@ -89,6 +89,7 @@ export const query = graphql`
           url
         }
         title
+        slug
       }
     }
   }

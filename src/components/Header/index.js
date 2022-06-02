@@ -25,15 +25,15 @@ export default function Header() {
             onMouseLeave={handleMouseLeave}
             className="header-link"
           >
-            about us
+            o nas
           </Link>
           <Link
-            to="/work"
+            to="/projekty"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             className="header-link"
           >
-            work
+            projekty
           </Link>
           <Link
             to="/"
@@ -41,7 +41,7 @@ export default function Header() {
             onMouseLeave={handleMouseLeave}
             className="header-link"
           >
-            contact
+            kontakt
           </Link>
         </div>
       </div>
@@ -52,24 +52,15 @@ export default function Header() {
 
       <div className={cn("overlay-burger-menu", { "as-opened": opened })}>
         <div className="burger-menu-header">#menu</div>
-        <Link
-            to="/"
-            className="burger-link"
-          >
-            about us
-          </Link>
-          <Link
-            to="/work"
-            className="burger-link"
-          >
-            work
-          </Link>
-          <Link
-            to="/"
-            className="burger-link"
-          >
-            contact
-          </Link>
+        <Link to="/" className="burger-link">
+          o nas
+        </Link>
+        <Link to="/projekty" className="burger-link">
+          projekty
+        </Link>
+        <Link to="/" className="burger-link">
+          kontakt
+        </Link>
       </div>
     </>
   );
