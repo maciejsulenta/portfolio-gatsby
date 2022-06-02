@@ -22,7 +22,7 @@
     word-break: break-all;
     font-size: 10em;
     font-weight: 400;
-    line-height: 1.25;
+    line-height: 1.1;
   }
 
   &__data {
@@ -60,6 +60,12 @@
       text-decoration: underline;
       text-underline-offset: 2px;
       font-weight: 300;
+      cursor: pointer;
+      transition: 0.2s ease-in-out;
+
+      &:hover {
+        color: #333;
+      }
     }
   }
 
