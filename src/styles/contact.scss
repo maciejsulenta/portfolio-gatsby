@@ -110,13 +110,14 @@
 
   @include mq("tablet", min) {
     &__title {
-      font-size: 15em;
+      font-size: 18em;
     }
   }
 
   @include mq("tablet-wide", min) {
+    width: 60%;
     &__title {
-      font-size: 17em;
+      font-size: 20em;
     }
   }
 
@@ -144,6 +145,17 @@
 
     &__details {
       justify-self: center;
+    }
+  }
+
+  @include mq("desktop-wide", min) {
+    &__title {
+      font-size: 25em;
+    }
+  }
+  @include mq("desktop-large", min) {
+    &__title {
+      font-size: 27em;
     }
   }
 }
