@@ -28,13 +28,13 @@
       position: absolute;
       top: 0;
       pointer-events: none;
-      color: black;
+      color: var(--secondary-color);
       clip-path: inset(0 100% 0 0);
       transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
     }
 
     &:not(.clone) {
-      -webkit-text-stroke: 1px rgba(0, 0, 0, 0.25);
+      -webkit-text-stroke: 1px rgba(255, 255, 255, 0.25);
       color: transparent;
       &:hover {
         cursor: pointer;
@@ -57,7 +57,7 @@
 
     .info-block-header {
       margin-bottom: 20px;
-      color: black;
+      color: var(--secondary-color);
       font-weight: 500;
       font-size: 24px;
       span {

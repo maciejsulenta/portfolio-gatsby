@@ -68,7 +68,7 @@ export default function Work({
       <div className="main-container" id="main-container">
         <ul ref={menuItems}>
           {renderItems.map((project, index) => (
-            <Link className="project-link" to={`/projekty/${project.slug}`}>
+            <Link className="link" to={`/projekty/${project.slug}`}>
               <ProjectItem key={index} project={project} itemIndex={index} />
             </Link>
           ))}
