@@ -49,9 +49,10 @@ export default function Header() {
         className={cn("overlay-burger-icon", { "as-opened": opened })}
         onClick={() => setOpen(!opened)}
       />
+      {/* <div className="burger-menu-header isClosed">PEES</div> */}
 
       <div className={cn("overlay-burger-menu", { "as-opened": opened })}>
-        <div className="burger-menu-header">h333</div>
+        <div className="burger-menu-header">PEES</div>
         <Link to="/" className="burger-link">
           o nas
         </Link>

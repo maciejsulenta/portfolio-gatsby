@@ -54,9 +54,18 @@
   }
 
   .burger-menu-header {
+    position: absolute;
+    top: 50px;
+    left: 50px;
     display: flex;
     align-items: center;
-    margin-bottom: 50px;
+    justify-content: center;
+    height: 48px;
+    text-align: center;
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 300;
+    word-break: break-all;
+    font-size: 1.25rem;
   }
 }
 
