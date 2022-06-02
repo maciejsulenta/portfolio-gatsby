@@ -5,10 +5,16 @@ import Header from "../components/Header";
 import ProjectItem from "../components/ProjectItem";
 import { pageData } from "../utils/data";
 import CustomCursor from "../components/CustomCursor";
+import { graphql } from "gatsby";
 
-export default function Work() {
+export default function Work({
+  data: {
+    allDatoCmsProject: { nodes },
+  },
+}) {
   const menuItems = useRef(null);
-  const [renderItems, setRenderItems] = useState(pageData);
+  const [renderItems, setRenderItems] = useState(nodes);
+  console.log("data", nodes);
 
   const cloneItems = () => {
     const itemHeight = menuItems.current.childNodes[0].offsetHeight;
@@ -71,3 +77,19 @@ export default function Work() {
     </CursorManager>
   );
 }
+
+export const query = graphql`
+  query {
+    allDatoCmsProject {
+      nodes {
+        id
+        info
+        image {
+          filename
+          url
+        }
+        title
+      }
+    }
+  }
+`;

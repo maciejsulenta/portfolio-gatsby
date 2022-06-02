@@ -126,18 +126,17 @@ export default function ProjectItem({ project, itemIndex }) {
         handleMouseLeave={handleMouseLeave}
       />
       <Image
-        url={project.url}
+        url={project.image.url}
         opacity={opacity}
         parallaxPos={parallaxPos}
         scale={scale}
         rotationPosition={rotationPosition}
       />
-
       <div className={cn("info-block", { "as-active": active })}>
         <p className="info-block-header">
           <span>#0{itemIndex}</span>
         </p>
-        {project.info.map((element) => (
+        {JSON.parse(project.info).map((element) => (
           <p key={element}>
             <span>{element}</span>
           </p>

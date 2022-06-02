@@ -81,7 +81,7 @@
       @for $i from 0 through 4 {
         p:nth-child(#{$i + 1}n) {
           span {
-            transition-delay: #{$i / 10}s;
+            transition-delay: #{calc($i / 10)}s;
           }
         }
       }
