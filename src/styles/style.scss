@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
 
-
 :root {
   --main-color: #333;
   --primary-color: #111;
@@ -19,14 +18,23 @@
 //   }
 // }
 
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 html {
   font-size: 16px;
 
-  ::-moz-selection { /* Code for Firefox */
+  ::-moz-selection {
+    /* Code for Firefox */
     color: var(--primary-color);
     background: var(--secondary-color);
   }
-  
+
   ::selection {
     color: var(--primary-color);
     background: var(--secondary-color);
@@ -37,6 +45,13 @@ body {
   font-family: "Poppins", sans-serif;
   background-color: var(--primary-color);
   color: var(--secondary-color);
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  padding: 0;
 }
 
 .link {
