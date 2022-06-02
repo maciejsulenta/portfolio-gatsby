@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import ProjectItem from "../components/ProjectItem";
 import CustomCursor from "../components/CustomCursor";
 import { graphql, Link } from "gatsby";
+import '../styles/projects.scss'
 
 export default function Work({
   data: {

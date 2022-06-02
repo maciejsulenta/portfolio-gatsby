@@ -36,7 +36,7 @@ export default function Header() {
             projekty
           </Link>
           <Link
-            to="/"
+            to="/kontakt"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             className="header-link"
@@ -51,14 +51,14 @@ export default function Header() {
       />
 
       <div className={cn("overlay-burger-menu", { "as-opened": opened })}>
-        <div className="burger-menu-header">#menu</div>
+        <div className="burger-menu-header">h333</div>
         <Link to="/" className="burger-link">
           o nas
         </Link>
         <Link to="/projekty" className="burger-link">
           projekty
         </Link>
-        <Link to="/" className="burger-link">
+        <Link to="/kontakt" className="burger-link">
           kontakt
         </Link>
       </div>

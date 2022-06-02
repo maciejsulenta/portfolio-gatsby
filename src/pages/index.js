@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/home.scss";
+import "../styles/style.scss";
 import Header from "../components/Header";
 import CursorManager from "../components/CustomCursor/CursorManager";
 import CustomCursor from "../components/CustomCursor";

@@ -1,0 +1,142 @@
+@import "./mixins";
+
+.contact {
+  position: relative;
+  top: 50px;
+  padding: 50px 0;
+  padding-left: 10vw;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  place-items: start;
+  gap: 2em 0;
+
+  &__heading {
+    grid-row: 1 / 2;
+    // background-color: red;
+  }
+
+  &__title {
+    width: 100%;
+    overflow: hidden;
+    word-break: break-all;
+    font-size: 10em;
+    font-weight: 400;
+    line-height: 1.25;
+  }
+
+  &__data {
+    grid-row: 2 / -1;
+    // background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    gap: 3em 0;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em 0;
+  }
+
+  &__subtitle {
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 1px;
+    font-size: 1em;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75em 0;
+
+    p {
+      font-weight: 300;
+    }
+  }
+
+  &__link {
+    color: var(--secondary-color);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    font-weight: 300;
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+    &:hover {
+      color: #333;
+    }
+  }
+
+  @include mq("phone", min) {
+    &__title {
+      font-size: 11em;
+    }
+  }
+
+  @include mq("phone-wide", min) {
+    width: 80%;
+    &__title {
+      font-size: 12em;
+    }
+  }
+
+  @include mq("phablet", min) {
+    width: 70%;
+    &__title {
+      font-size: 13em;
+    }
+    &__subtitle {
+      font-size: 1.25em;
+    }
+
+    &__info {
+      font-size: 1.1em;
+    }
+  }
+
+  @include mq("tablet-small", min) {
+    &__title {
+      font-size: 14em;
+    }
+  }
+
+  @include mq("tablet", min) {
+    &__title {
+      font-size: 15em;
+    }
+  }
+
+  @include mq("tablet-wide", min) {
+    &__title {
+      font-size: 17em;
+    }
+  }
+
+  @include mq("desktop", min) {
+    width: 100%;
+    grid-template-columns: 2fr 1fr;
+    gap: 0 5rem;
+
+    &__title {
+      font-size: 23em;
+    }
+
+    &__heading {
+      grid-column: 1 / 2;
+    }
+
+    &__data {
+      grid-column: 2 / -1;
+      grid-row: 1 / -1;
+      position: fixed;
+      right: 5vw;
+      top: 50%;
+      transform: translate(0, -50%);
+    }
+
+    &__details {
+      justify-self: center;
+    }
+  }
+}

@@ -1,9 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
 
-$bg-color: white;
 
 :root {
   --main-color: #3664e8;
+  --primary-color: #111;
+  --secondary-color: #f2f2f2;
 }
 
 ::-webkit-scrollbar {
@@ -18,23 +19,16 @@ $bg-color: white;
 //   }
 // }
 
-body {
-  font-family: "Poppins", sans-serif;
-  background-color: $bg-color;
+html {
+  font-size: 16px;
 }
 
-.main-container {
-  ul {
-    scroll-behavior: smooth;
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    padding-left: 10vw;
-    box-sizing: border-box;
-    overflow: auto;
-  }
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}
 
-  .project-link {
-    text-decoration: none;
-  }
+.link {
+  text-decoration: none;
 }
