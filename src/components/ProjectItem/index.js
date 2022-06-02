@@ -98,9 +98,9 @@ export default function ProjectItem({ project, itemIndex }) {
   };
 
   const handleMouseEnter = () => {
-    handleOpacity(0, 1, 100);
-    handleScale(0.8, 1, 100);
-    handleRotation(state.rotationPosition, 100);
+    handleOpacity(0, 1, 25);
+    handleScale(0.8, 1, 25);
+    handleRotation(state.rotationPosition, 25);
     listItem.current.addEventListener("mousemove", parallax);
     dispatch({ type: "MOUSE_ENTER" });
     setSize("regular");
@@ -108,9 +108,9 @@ export default function ProjectItem({ project, itemIndex }) {
 
   const handleMouseLeave = () => {
     listItem.current.removeEventListener("mousemove", parallax);
-    handleOpacity(1, 0, 100);
-    handleScale(1, initialState.scale, 100);
-    handleRotation(state.rotationPosition, 100);
+    handleOpacity(1, 0, 25);
+    handleScale(1, initialState.scale, 25);
+    handleRotation(state.rotationPosition, 25);
     dispatch({ type: "MOUSE_COORDINATES", payload: initialState.parallaxPos });
     dispatch({ type: "MOUSE_LEAVE" });
     setSize("small");

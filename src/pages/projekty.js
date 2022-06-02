@@ -3,7 +3,6 @@ import CursorManager from "../components/CustomCursor/CursorManager";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import ProjectItem from "../components/ProjectItem";
-import { pageData } from "../utils/data";
 import CustomCursor from "../components/CustomCursor";
 import { graphql, Link } from "gatsby";
 
@@ -14,7 +13,6 @@ export default function Work({
 }) {
   const menuItems = useRef(null);
   const [renderItems, setRenderItems] = useState(nodes);
-  console.log("data", nodes);
 
   const cloneItems = () => {
     const itemHeight = menuItems.current.childNodes[0].offsetHeight;
@@ -63,18 +61,20 @@ export default function Work({
   }, []);
 
   return (
-    <CursorManager>
-      <CustomCursor />
+    <>
+      {/* <CustomCursor /> */}
       <Header />
       <div className="main-container" id="main-container">
         <ul ref={menuItems}>
           {renderItems.map((project, index) => (
-            <Link className="project-link" to={`/projekty/${project.slug}`}><ProjectItem key={index} project={project} itemIndex={index} /></Link>
+            <Link className="project-link" to={`/projekty/${project.slug}`}>
+              <ProjectItem key={index} project={project} itemIndex={index} />
+            </Link>
           ))}
         </ul>
       </div>
       <Footer />
-    </CursorManager>
+    </>
   );
 }
 

@@ -6,10 +6,10 @@ import CustomCursor from "../components/CustomCursor";
 
 const Index = () => {
   return (
-    <CursorManager>
-      <CustomCursor />
+    <>
+      {/* <CustomCursor /> */}
       <Header />
-    </CursorManager>
+    </>
   );
 };
 export default Index;

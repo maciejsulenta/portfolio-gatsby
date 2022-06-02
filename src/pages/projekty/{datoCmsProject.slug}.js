@@ -9,8 +9,8 @@ export default function Projekt({
   },
 }) {
   return (
-    <CursorManager>
-      <CustomCursor />
+    <>
+      {/* <CustomCursor /> */}
       <h1>{title}</h1>
       <img src={image.url} alt={image.filename} />
       {JSON.parse(info).map((element) => (
@@ -19,7 +19,7 @@ export default function Projekt({
         </p>
       ))}
       <Link to="/projekty">Wróć do projektów</Link>
-    </CursorManager>
+    </>
   );
 }
 
