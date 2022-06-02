@@ -54,6 +54,13 @@
     p {
       font-weight: 300;
     }
+
+    h3 {
+      margin-bottom: 1em;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      font-weight: 300;
+    }
   }
 
   &__link {

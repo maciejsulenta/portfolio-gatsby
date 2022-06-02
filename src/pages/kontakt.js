@@ -14,7 +14,8 @@ export default function kontakt() {
           <div className="contact__details">
             <h2 className="contact__subtitle">Pozostańmy w kontakcie</h2>
             <div className="contact__info">
-              <p>Jan Nowak</p>
+              <h3>kontakt@pees.pl</h3>
+              <p>Adrian</p>
               <p>+48 997 997 997</p>
               <p>ul. Lubelska 23/6</p>
               <p>997 Lublin</p>
