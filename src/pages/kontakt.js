@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import Header from "../components/Header";
 import "../styles/contact.scss";
 
-export default function kontakt() {
+export default function Kontakt() {
   return (
-    <>
+    <section className="main-wrapper">
       <Header />
       <section className="contact">
         <div className="contact__heading">
@@ -56,6 +56,6 @@ export default function kontakt() {
           </div>
         </div>
       </section>
-    </>
+    </section>
   );
 }

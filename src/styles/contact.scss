@@ -1,10 +1,6 @@
 @import "./mixins";
 
 .contact {
-  position: relative;
-  top: 50px;
-  padding: 50px 0;
-  padding-left: 10vw;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto;
@@ -23,7 +19,12 @@
     font-size: 10em;
     font-weight: 400;
     line-height: 1.1;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.25);
+    color: transparent;
+    cursor: pointer;
   }
+
+
 
   &__data {
     grid-row: 2 / -1;
