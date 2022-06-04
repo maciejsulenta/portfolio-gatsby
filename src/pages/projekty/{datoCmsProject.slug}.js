@@ -1,123 +1,68 @@
 import React, { useState, useEffect, useRef } from "react";
-import { graphql, Link } from "gatsby";
+import { graphql } from "gatsby";
 import Header from "../../components/Header";
-import "../../styles/project.scss";
-import cn from "classnames";
+import useLocoScroll from "../../hooks/useLocoScroll";
+import Footer from "../../components/Project/Footer";
+import Heading from "../../components/Project/Heading";
+import Featured from "../../components/Project/Featured";
+import Gallery from "../../components/Project/Gallery";
+import About from "../../components/Project/About";
+import "../../styles/style.scss";
 
 export default function Projekt({
   data: {
     datoCmsProject: { title, image, info, gallery },
   },
 }) {
-  const sideMenu = useRef(null);
-  const [activeImage, setActiveImage] = useState(1);
-  const [menuBg, setMenuBg] = useState(false);
+  const [preloader, setPreloader] = useState(true);
+  useLocoScroll(!preloader);
+  const [timer, setTimer] = useState(3);
+  const id = useRef(null);
 
-  const changeBg = () => {
-    if (window.scrollY > 0) {
-      setMenuBg(true);
-    } else {
-      setMenuBg(false);
-    }
+  const clear = () => {
+    window.clearInterval(id.current);
+    setPreloader(false);
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", changeBg);
-    return () => window.removeEventListener("scroll", changeBg);
+    id.current = window.setInterval(() => {
+      setTimer((timer) => timer - 1);
+    }, 1000);
   }, []);
 
+  useEffect(() => {
+    if (timer === 0) {
+      clear();
+    }
+  }, [timer]);
+
   return (
-    <section className="main-wrapper">
-      <Header />
-      <section className="header">
-        <ul
-          className={cn("header__menu", { header__scroll: menuBg })}
-          ref={sideMenu}
-        >
-          <li>
-            <a href="#intro" className={menuBg ? "link" : ""}>
-              Intro
-            </a>
-          </li>
-          <li>
-            <a href="#o-projekcie" className={menuBg ? "link" : ""}>
-              O projekcie
-            </a>
-          </li>
-          <li>
-            <a href="#galeria" className={menuBg ? "link" : ""}>
-              Galeria
-            </a>
-          </li>
-          <li>
-            <Link to="/projekty" className={menuBg ? "link" : ""}>
-              Powrót do projektów
-            </Link>
-          </li>
-        </ul>
-        <h1 id="header-text">{title}</h1>
-      </section>
-      <section className="featured" id="intro">
-        <div className="featured__row">
-          <h6>Green</h6>
-          <img src={gallery[0].url} />
+    <>
+      {preloader ? (
+        <div className="loader-wrapper absolute">
+          <h1>PEES</h1>
+          <h2>Twozymy kozackie stronki</h2>
         </div>
-        <div className="featured__column">
-          <h6>lily</h6>
-          <img src={gallery[1].url} />
-        </div>
-      </section>
-      <section className="about" id="o-projekcie">
-        <h6 className="about__header">Section header</h6>
-        <p id="headline">
-          Flirty Flowers is a blog about flowers and the floral
-        </p>
-      </section>
-      <section className="gallery gallery-wrap" id="galeria">
-        <div className="gallery__data">
-          <div className="gallery__counter">
-            <span>{activeImage}</span>
-            <span className="gallery__divider"></span>
-            <span>{gallery.length}</span>
+      ) : (
+        <>
+          <Header />
+          <div className="main-container" id="main-container">
+            <Heading title={title} />
+            <Featured gallery={gallery} />
+            <About />
+            <Gallery gallery={gallery} />
+            <Footer />
+            {/* <h1>{title}</h1>
+    <img src={image.url} alt={image.filename} />
+    {JSON.parse(info).map((element) => (
+      <p key={element}>
+        <span>{element}</span>
+      </p>
+    ))} */}
           </div>
-          {gallery.map((image, index) => (
-            <div
-              key={image.filename}
-              index={index}
-              updateActiveImage={(index) => setActiveImage(index + 1)}
-              className="gallery__item-wrapper"
-            >
-              <div />
-              <div className="gallery__item">
-                <div className="gallery__item-info">
-                  <h1 className="gallery__item-title">Title</h1>
-                  <h6 className="gallery__item-subtitle">Subtitle</h6>
-                  <p className="gallery__item-category">Category</p>
-                </div>
-                <div
-                  className="gallery__item-image"
-                  style={{ backgroundImage: `url(${image.url})` }}
-                ></div>
-              </div>
-              <div />
-            </div>
-          ))}
-        </div>
-      </section>
-      <section className="footer">
-        <p className="footer__header about__header">Made in</p>
-        <h1 className="footer__location" id="location-text">
-          Rjo De Rzanejrno
-        </h1>
-      </section>
-      {/* <h1>{title}</h1>
-      <img src={image.url} alt={image.filename} />
-      {JSON.parse(info).map((element) => (
-        <p key={element}>
-          <span>{element}</span>
-        </p>
-      ))} */}
-    </section>
+        </>
+      )}
+    </>
   );
 }
 

@@ -4,7 +4,7 @@ import "../styles/contact.scss";
 
 export default function Kontakt() {
   return (
-    <section className="main-wrapper">
+    <section className="main-container">
       <Header />
       <section className="contact">
         <div className="contact__heading">

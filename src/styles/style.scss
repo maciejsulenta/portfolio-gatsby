@@ -1,9 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@300;400;500;600;700&family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600;6..96,700&family=Poppins:wght@100;200;300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Syncopate:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@300;400;500;600;700&family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600;6..96,700&family=Poppins:wght@100;200;300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Syncopate:wght@400;700&display=swap");
 
 :root {
-  --main-color: #333;
-  --primary-color: #111;
-  --secondary-color: #f2f2f2;
+  --black-color: #111;
+  --alt-color: #222;
+  --hover-color: #333;
+  --white-color: #f2f2f2;
+  --font-bai: "Bai Jamjuree", sans-serif;
+  --font-bodoni: "Bodoni Moda", sans-serif;
+  --font-poppins: "Poppins", sans-serif;
+  --font-space: "Space Grotesk", sans-serif;
 }
 
 ::-webkit-scrollbar {
@@ -32,20 +37,28 @@ html {
 
   ::-moz-selection {
     /* Code for Firefox */
-    color: var(--primary-color);
-    background: var(--secondary-color);
+    color: var(--black-color);
+    background: var(--white-color);
   }
 
   ::selection {
-    color: var(--primary-color);
-    background: var(--secondary-color);
+    color: var(--black-color);
+    background: var(--white-color);
   }
 }
 
 body {
-  font-family: "Poppins", sans-serif;
-  background-color: var(--primary-color);
-  color: var(--secondary-color);
+  font-family: var(--font-poppins);
+  background-color: var(--black-color);
+  color: var(--white-color);
+}
+
+html,
+body,
+#gatsby-focus-wrapper,
+#___gatsby {
+  height: 100%;
+  width: 100%;
 }
 
 h1,
@@ -55,13 +68,51 @@ h3 {
   padding: 0;
 }
 
-.main-wrapper {
+.main-container {
+  padding: 0 5vw;
   position: relative;
-  top: 50px;
-  padding: 50px 0;
-  padding-left: 10vw;
+}
+
+section {
+  padding: 100px 0;
+  .section-header {
+    margin-bottom: 50px;
+  }
 }
 
 .link {
   text-decoration: none;
+}
+
+.loader-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: var(--black-color);
+  color: var(--white-color);
+
+  h1 {
+    font-size: 1.5vw;
+    text-transform: uppercase;
+    font-family: var(--font-bai);
+    font-weight: 600;
+  }
+  h2 {
+    font-size: 1.5vw;
+    text-transform: uppercase;
+    font-family: var(--font-bodoni);
+    font-style: italic;
+    margin-top: 10px;
+  }
+}
+
+.absolute {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: var(--black-color);
+  z-index: 1;
 }
