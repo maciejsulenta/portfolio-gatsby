@@ -18,6 +18,7 @@ export default function Header() {
   return (
     <>
       <div className="overlay-nav">
+        <Link to="/" className="logo">PEES</Link>
         <div className="header-container">
           <Link
             to="/"
@@ -25,7 +26,7 @@ export default function Header() {
             onMouseLeave={handleMouseLeave}
             className="header-link"
           >
-            o nas
+            strona główna
           </Link>
           <Link
             to="/projekty"
@@ -52,9 +53,8 @@ export default function Header() {
       {/* <div className="burger-menu-header isClosed">PEES</div> */}
 
       <div className={cn("overlay-burger-menu", { "as-opened": opened })}>
-        <div className="burger-menu-header">PEES</div>
         <Link to="/" className="burger-link">
-          o nas
+          strona główna
         </Link>
         <Link to="/projekty" className="burger-link">
           projekty
