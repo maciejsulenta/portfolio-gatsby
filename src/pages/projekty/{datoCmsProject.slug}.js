@@ -41,12 +41,12 @@ export default function Projekt({
       {preloader ? (
         <div className="loader-wrapper absolute">
           <h1>PEES</h1>
-          <h2>Twozymy kozackie stronki</h2>
+          <h2>Akat tego typu benc</h2>
         </div>
       ) : (
         <>
           <Header />
-          <div className="main-container" id="main-container">
+          <div className="main-container" id="main-container" data-scroll-container>
             <Heading title={title} />
             <Featured gallery={gallery} />
             <About />

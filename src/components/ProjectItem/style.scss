@@ -28,7 +28,7 @@
       position: absolute;
       top: 0;
       pointer-events: none;
-      color: var(--secondary-color);
+      color: var(--white-color);
       clip-path: inset(0 100% 0 0);
       transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
     }
@@ -57,7 +57,7 @@
 
     .info-block-header {
       margin-bottom: 20px;
-      color: var(--secondary-color);
+      color: var(--white-color);
       font-weight: 500;
       font-size: 24px;
       span {
