@@ -4,9 +4,12 @@
   display: none;
   position: fixed;
   top: 50px;
-  left: 70vw;
-  box-sizing: border-box;
   z-index: 10;
+
+  .logo {
+    text-decoration: none;
+    color: var(--white-color);
+  }
 
   .header-container {
     display: flex;
@@ -34,8 +37,8 @@
   clip-path: inset(0% 0 100% 0);
   display: flex;
   flex-direction: column;
-  padding-left: 30vw;
-  padding-top: 30vh;
+  align-items: center;
+  justify-content: center;
   transition: clip-path 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
   color: var(--black-color);
 
@@ -45,8 +48,9 @@
 
   .burger-link {
     font: {
-      size: 10vw;
-      family: "Space Grotesk", sans-serif;
+      size: 2.5em;
+      family: var(--font-space);
+      weight: 500;
     }
     margin: 20px 0;
     text-decoration: none;
@@ -124,6 +128,15 @@
   }
 
   .overlay-nav {
-    display: block;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5vw;
+
+    .logo {
+      font-size: 2em;
+      font-family: var(--font-logo-1);
+    }
   }
 }
