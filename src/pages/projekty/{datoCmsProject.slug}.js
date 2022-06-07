@@ -1,12 +1,12 @@
-import React, { useState, useEffect, useRef } from "react";
 import { graphql } from "gatsby";
+import React, { useEffect, useRef, useState } from "react";
 import Header from "../../components/Header";
-import useLocoScroll from "../../hooks/useLocoScroll";
-import Footer from "../../components/Project/Footer";
-import Heading from "../../components/Project/Heading";
-import Featured from "../../components/Project/Featured";
-import Gallery from "../../components/Project/Gallery";
 import About from "../../components/Project/About";
+import Featured from "../../components/Project/Featured";
+import Footer from "../../components/Project/Footer";
+import Gallery from "../../components/Project/Gallery";
+import Heading from "../../components/Project/Heading";
+import useLocoScroll from "../../hooks/useLocoScroll";
 import "../../styles/style.scss";
 
 export default function Projekt({
@@ -38,30 +38,21 @@ export default function Projekt({
 
   return (
     <>
-      {preloader ? (
-        <div className="loader-wrapper absolute">
-          <h1>PEES</h1>
-          <h2>Akat tego typu</h2>
-        </div>
-      ) : (
-        <>
-          <Header />
-          <div className="main-container" id="main-container" data-scroll-container>
-            <Heading title={title} />
-            <Featured gallery={gallery} />
-            <About />
-            <Gallery gallery={gallery} />
-            <Footer />
-            {/* <h1>{title}</h1>
+      <Header />
+      <div className="main-container" id="main-container" data-scroll-container>
+        <Heading title={title} />
+        <Featured gallery={gallery} />
+        <About />
+        <Gallery gallery={gallery} />
+        <Footer />
+        {/* <h1>{title}</h1>
     <img src={image.url} alt={image.filename} />
     {JSON.parse(info).map((element) => (
       <p key={element}>
         <span>{element}</span>
       </p>
     ))} */}
-          </div>
-        </>
-      )}
+      </div>
     </>
   );
 }
