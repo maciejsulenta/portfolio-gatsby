@@ -41,7 +41,7 @@ export default function Projekt({
       {preloader ? (
         <div className="loader-wrapper absolute">
           <h1>PEES</h1>
-          <h2>Akat tego typu benc</h2>
+          <h2>Akat tego typu</h2>
         </div>
       ) : (
         <>
